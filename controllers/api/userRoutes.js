@@ -104,7 +104,7 @@ router.put('/:id', withAuth, async (req, res) => {
   try {
 
     if (req.params.id != req.session.user_id) {
-      res.status(403).json({message: "You cannot modify other user's account"})
+      res.status(403).json({message: "You cannot modify someone else's account"})
       return;
     }
 
@@ -116,7 +116,7 @@ router.put('/:id', withAuth, async (req, res) => {
     });
 
     if (!userData) {
-      res.status(404).json({ message: 'No user found with this id!' });
+      res.status(404).json({ message: 'No user found!' });
       return;
     }
 
@@ -131,7 +131,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   try {
 
     if (req.params.id != req.session.user_id) {
-      res.status(403).json({message: "You cannot modify other user's account"})
+      res.status(403).json({message: "You cannot modify someone else's account"})
       return;
     }
     
@@ -142,7 +142,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!userData) {
-      res.status(404).json({ message: 'No user found with this id!' });
+      res.status(404).json({ message: 'No user found!' });
       return;
     }
 
